@@ -4,28 +4,39 @@ public class Actor {
 
 // Atributos 
 		private String nombre;
-		private String lugar;
+		private String nacionalidad;
 		private int edad;
-		private int reconocimientos;
 // Constructor
-		public Actor(String nombre, String lugar, int edad, int reconocimientos) {
-	        this.nombre = nombre;
-	        this.lugar = lugar;
+		public Actor( String nombre, String nacionalidad, int edad ) {    
+			this.nombre = nombre;
+	        this.nacionalidad = nacionalidad;
 	        this.edad = edad;
-	        this.reconocimientos = reconocimientos;
 	    }
-// Getter y Setters
+		// Método mostrarDetalles()
+	    public void mostrarDetalles() {
+	        System.out.println("Actor: " + nombre + ", Edad: " + edad+ ",Nacionalidad:"+ nacionalidad);
+	    }
+	
+//  CSV
+	    public static Actor desdeCSV(String[] datos) {
+	        String nombre = datos[0];
+	        String nacionalidad = datos[1];
+	        int edad = Integer.parseInt(datos[2]);
+	        return new Actor(nombre, nacionalidad, edad);
+	    }
+ 
+	//  Getter y Setters
 		public String getNombre() {
 			return nombre;
 		}
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
 		}
-		public String getLugar() {
-			return lugar;
+		public String getNacionalidad() {
+			return nacionalidad;
 		}
-		public void setLugar(String lugar) {
-			this.lugar = lugar;
+		public void setNacionalidad(String nacionalidad) {
+			this.nacionalidad = nacionalidad;
 		}
 		public int getEdad() {
 			return edad;
@@ -33,14 +44,7 @@ public class Actor {
 		public void setEdad(int edad) {
 			this.edad = edad;
 		}
-		public int getReconocimientos() {
-			return reconocimientos;
-		}
-		public void setReconocimientos(int reconocimientos) {
-			this.reconocimientos = reconocimientos;
-		}
-		public String mostrarInfo() {
-	        return nombre + " (" + lugar + ", " + edad + " años, " + reconocimientos + " premios)";
-	    }
-	}
+		
+}
+		
 

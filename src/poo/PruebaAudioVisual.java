@@ -1,46 +1,79 @@
 package poo;
+import java.util.List;
+import java.util.ArrayList;
 import uni1a.*;
 
 public class PruebaAudioVisual {
 	public static void main(String[] args) {
-        System.out.println("Hello from Eclipse!");
         
-        // Pelicula y actor
-        Actor actor1 = new Actor("Keanu Reeves", "Canadá", 60, 4);
-        Pelicula peli1 = new Pelicula("John Wick", 101, "Acción", "Lionsgate");
-        peli1.agregarActor(actor1); // Asociación entre película y actor
-
-        // Serie y temporada
-        Temporada t1 = new Temporada(1, 7, 2017);
-        SerieDeTV serie1= new SerieDeTV("Anne with an E", 47, "Drama histórico", 3);
-        serie1.agregarTemporada(t1);
-
-        //  Documental e investigador 
-        Investigador i1 = new Investigador("Carl Sagan", "Astrofísica", "Cornell University");
-        Documental docu = new Documental("Cosmos", 45, "Ciencia", "Astronomía");
-        docu.agregarInvestigador(i1);
-
-        // VideoMusical
-        Artista morat = new Artista("Morat", 4);
-        VideoMusical video= new VideoMusical("Cuando Nadie ve", 4, "Pop Latino","Universal Music",1,"Youtube");
-        video.agregarArtista(morat);
-        
-        // Tutorial
-        Instructor instructor1 = new Instructor("Sofía Mendoza", "Desarrollo Web");
-        Tutorial tuto = new Tutorial("HTML para Principiantes", 30, "Educación", "Platzi", "Programación Frontend");
-        tuto.agregarInstructor(instructor1);
-
-        // Arreglo con los 5 contenidos
-        ContenidoAudiovisual[] contenidos = new ContenidoAudiovisual[5];
-        contenidos[0] = peli1;
-        contenidos[1] = serie1;
-        contenidos[2] = docu;
-        contenidos[3]= video;
-        contenidos[4]= tuto;
-
-        // Mostrar detalles
-        for (ContenidoAudiovisual contenido : contenidos) {
-            contenido.mostrarDetalles();
+	
+// Películas 
+        System.out.println("----------------------");
+        List<String[]> datosPeliculas = ArchivoUtil.leerCSV("data/peliculas.csv");
+        List<Pelicula> peliculas = new ArrayList<>();
+        for (String[] linea : datosPeliculas) {
+            peliculas.add(Pelicula.desdeCSV(linea));
         }
-    }
+        System.out.println("\n PELÍCULAS:");
+        for (Pelicula pelicula : peliculas) {
+            pelicula.mostrarDetalles(); 
+        }
+     // Actor
+        List<String[]> datosActor = ArchivoUtil.leerCSV("data/actores.csv");
+        List<Actor> actores = new ArrayList<>();
+        for (String[] linea : datosActor) {
+            actores.add(Actor.desdeCSV(linea));
+        }
+        System.out.println("\n ACTORES:");
+        for (Actor actor : actores) {
+            actor.mostrarDetalles(); 
+        }
+// Documentales
+        System.out.println("----------------------");
+        List<String[]> datosDocumentales = ArchivoUtil.leerCSV("data/documentales.csv");
+        List<Documental> documentales = new ArrayList<>();
+        for (String[] linea : datosDocumentales) {
+            documentales.add(Documental.desdeCSV(linea));
+        }
+        System.out.println("\n DOCUMENTALES:");
+        for (Documental doc : documentales) {
+            doc.mostrarDetalles(); 
+        }
+       // Investigadores 
+        List<String[]> datosInvestigadores = ArchivoUtil.leerCSV("data/investigadores.csv");
+        List<Investigador> investigadores = new ArrayList<>();
+        for (String[] linea : datosInvestigadores) {
+            investigadores.add(Investigador.desdeCSV(linea));
+        }
+
+        System.out.println("\n INVESTIGADORES:");
+        for (Investigador investigador : investigadores) {
+            investigador.mostrarDetalles();
+        }
+      
+        // Series
+        System.out.println("--------------------");
+        List<String[]> datosSeries = ArchivoUtil.leerCSV("data/series.csv");
+        List<SerieDeTV> series = new ArrayList<>();
+        for (String[] linea : datosSeries) {
+            series.add(SerieDeTV.desdeCSV(linea));
+        }
+        System.out.println("\n SERIES DE TV:");
+        for (SerieDeTV serie : series) {
+            serie.mostrarDetalles(); //
+        }
+     // Temporadas 
+        List<String[]> datosTemporadas = ArchivoUtil.leerCSV("data/temporadas.csv");
+        List<Temporada> temporadas = new ArrayList<>();
+        for (String[] linea : datosTemporadas) {
+        	temporadas.add(Temporada.desdeCSV(linea));
+        }
+
+        System.out.println("\n TEMPORADAS:");
+        for (Temporada temporada : temporadas) {
+            temporada.mostrarDetalles();
+        }
+
+}
+
 }

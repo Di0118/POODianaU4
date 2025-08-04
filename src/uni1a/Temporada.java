@@ -12,6 +12,18 @@ public class Temporada {
 	        this.episodios = episodios;
 	        this.añoEstreno = añoEstreno;
 		}
+// Método mostrarDetalles()
+	    public  void mostrarDetalles() {
+	        System.out.println("Temporada: " + numeroTemporada + ", Episodios: " + episodios+ ",Estreno:"+ añoEstreno);
+	    }
+	 // CSV
+	    public static Temporada desdeCSV(String[] datos) {
+	        int numeroTemporada = Integer.parseInt(datos[0]);
+	        int episodios = Integer.parseInt(datos[1]);
+	        int añoEstreno = Integer.parseInt(datos[2]);
+	        return new Temporada(numeroTemporada, episodios, añoEstreno);
+	    }
+
 // Getter y Setters
 
 		public int getNumeroTemporada() {

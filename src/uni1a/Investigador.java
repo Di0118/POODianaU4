@@ -12,6 +12,18 @@ public class Investigador {
 		      this.especialidad = especialidad;
 		      this.institucion = institucion;
 		    }
+	// Método mostrarDetalles()
+	    public void mostrarDetalles() {
+	        System.out.println("Investigador: " + nombre + ", Especialidad: " + especialidad+ ",Institución:"+ institucion);
+	    }
+	//  CSV
+	    public static Investigador desdeCSV(String[] datos) {
+	        String nombre = datos[0];
+	        String especialidad = datos[1];
+	        String institucion= datos[2];
+	        return new Investigador(nombre, especialidad, institucion);
+	    }
+	
 // Getter y Setters
 
 		public String getNombre() {
